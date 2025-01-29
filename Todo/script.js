@@ -3,7 +3,7 @@
     Description: A classic project where users can add, remove, and mark tasks as complete.
     Features:
     Tasks can be saved locally (using localStorage).
-    Option to filter tasks by status (completed or pending).
+    Option to filter tasks by status (completed or pending) or Date.
     A due date for each task with a reminder/notification.
 */
 
