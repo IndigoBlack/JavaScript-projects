@@ -56,16 +56,3 @@ function addTask() {
     });
 }
 
-/*
-function edit(li) {
-    // create an input that will show up when one clicks the edit button.
-    // Get the value of whatever the user typed in the input.
-    // Save the value.
-    const edit = li.querySelector(".edit-btn");
-    const input = document.createElement("input");
-    input.type = "text";
-    input.placeholder = "Enter text here";
-    document.body.appendChild(input);
-    input.style.diplay = "none";
-}
-*/
