@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+</head>
+<body>
+    <!--
+        To-Do List App
+        Description: A classic project where users can add, remove, and mark tasks as complete.
+        Features:
+        Tasks can be saved locally (using localStorage).
+        Option to filter tasks by status (completed or pending).
+        A due date for each task with a reminder/notification.
+    -->
+    <div class="container">
+        <h1>To-Do</h1>
+        <div class="form-container">
+            <input type="text" class="title">
+            <textarea class="description"></textarea>
+            <input type="date" class="date">
+            <button id="submit" onclick="addTask()">Submit</button>
+        </div>
+        <h2>Task List</h2>
+        <ul class="task-list"></ul>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
