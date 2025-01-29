@@ -54,5 +54,7 @@ function addTask() {
     deleteButton.addEventListener("click", function() {
         taskList.remove(li);
     });
+
+    // Add number of completed tasks here
 }
 
