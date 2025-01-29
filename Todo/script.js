@@ -20,7 +20,7 @@ function addTask() {
             <span class="task-description">${description}</span><br>
             <span class="task-date">${date}</span><br>
             <button class="edit-btn">Edit</button><br>
-            <button class="delete=btn">Delete</button><br>
+            <button class="delete-btn">Delete</button><br>
         
     `;
     taskList.appendChild(li);
@@ -48,7 +48,12 @@ function addTask() {
             editButton.textContent = "Edit";
         }
         */
-    })
+    });
+    
+    const deleteButton = li.querySelector(".delete-btn");
+    deleteButton.addEventListener("click", function() {
+        taskList.remove(li);
+    });
 }
 
 /*
