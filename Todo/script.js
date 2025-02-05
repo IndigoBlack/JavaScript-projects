@@ -8,7 +8,7 @@
 */
 
 
-function addTask() {
+function todo() {
     const title = document.querySelector(".title").value;
     const description = document.querySelector(".description").value;
     const date = document.querySelector(".date").value;
