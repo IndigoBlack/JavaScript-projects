@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <title>To-Do</title>
 </head>
@@ -18,13 +19,14 @@
     <div class="container">
         <h1>To-Do</h1>
         <div class="form-container">
-            <input type="text" class="title">
-            <textarea class="description"></textarea>
-            <input type="date" class="date">
-            <button id="submit" onclick="todo()">Submit</button>
+            <input type="text" id="title" class="form-control">
+            <textarea id="description" class="form-control" rows="3"></textarea>
+            <input type="date" id="date" class="form-control">
+            <button id="submit" class="btn btn-primary" onclick="todo()">Submit</button>
         </div>
         <h2>Task List</h2>
         <ul class="task-list"></ul><hr>
+        <div class="checked"> <ul class="checked-tasks"></ul></div>
     </div>
     <script type="text/javascript" src="script.js"></script>
 </body>
