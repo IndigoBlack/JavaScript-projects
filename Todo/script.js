@@ -10,11 +10,14 @@
 
 // Still have to deal with the checkbox bugs
 function todo() {
+    // Get the form values for the task
+    const container = document.querySelector(".container");
     const title = document.querySelector("#title").value;
     const description = document.querySelector("#description").value;
     const date = document.querySelector("#date").value;
     const taskList = document.querySelector(".task-list");
-    const li = document.createElement("li");
+
+    const li = document.createElement("li"); // Create <li> to hold the task details
     li.innerHTML = `
         <input type="checkbox" class="form-check-input"> 
             <span class="task-title">${title}</span><br>
@@ -23,61 +26,58 @@ function todo() {
             <button id="edit-btn" class="btn btn-secondary">Edit</button><br>
             <button id="delete-btn" class="btn btn-secondary">Delete</button><br>
         
-    `;
-    taskList.appendChild(li);
+    `; // Display the task details in the <li>
+    taskList.appendChild(li); // Append newly created task to the incomplete task list
+
+    const checkedTasks = document.querySelector(".checked-tasks");
+    container.addEventListener("change", function(event) {
+        if (event.target && event.target.classList.contains("form-check-input")) {
+            console.log("Checkbox clicked"); // Error checking
+            const box = event.target
+            const taskLi = box.closest("li");
+
+            console.log("Current parent:", taskLi.parentElement); 
+
+            if (taskLi.parentElement === taskList) {
+                taskList.removeChild(taskLi);
+                console.log("Task removed from incomplete tasks");
+            } else if (taskLi.parentElement === checkedTasks) {
+                checkedTasks.removeChild(taskLi);
+                console.log("Task removed from competed tasks");
+            }
+
+            if (box.checked) {
+                checkedTasks.appendChild(taskLi); // Append it to the completed tasks list
+            } else {
+                taskList.appendChild(taskLi); // Append it to the incompleted tasks list
+            }
+        }
+    })
+
+    
+    // Get the values of the newly created task
     const taskTitle = li.querySelector(".task-title");
     const taskDescription = li.querySelector(".task-description");
     const taskDate = li.querySelector(".task-date");
 
-    const check = [];
-    const checkbox = document.querySelector(".form-check-input");
-    const checkedTasks = document.querySelector(".checked-tasks");
-    console.log(checkbox.checked)
-    const completed = () => {
-        console.log("Checkbox clicked");
-        if (checkbox.checked) {
-            console.log("Checkbox checked.");
-            check.push(taskTitle.textContent);
-            console.log("It should do now.")
-        }
-        
-        for (let i = 0; i < check.length; i++) {
-            if (!checkbox.checked) {
-                check.splice(i, 1);
-                i--;
-            }
-        }
-        let items = check.map(item => `<li>${item}</li>`)
-        checkedTasks.innerHTML = items.join(" ");
-    }
-    checkbox.addEventListener("click", completed);
-    
-
+    // Edit button
     const editButton = li.querySelector("#edit-btn");
     editButton.addEventListener("click", function() {
-
         const updateTitle = prompt("Edit title: ", taskTitle.textContent);
         const updateDescription = prompt("Edit description: ", taskDescription.textContent);
         taskTitle.textContent = updateTitle;
         taskDescription.textContent = updateDescription
-        /*
-        if (editButton.textContent === "Edit") {
-            taskTitle.contentEditable = true;
-            taskDescription.contentEditable = true;
-            taskDate.contentEditable = true;
-            editButton.textContent = "Save";
-        } else {
-            taskTitle.contentEditable = false;
-            taskDescription.contentEditable = false;
-            taskDate.contentEditable = false;
-            editButton.textContent = "Edit";
-        }
-        */
     });
     
-    const deleteButton = li.querySelector("#delete-btn");
+    const deleteButton = container.querySelector("#delete-btn");
     deleteButton.addEventListener("click", function() {
-        taskList.remove(li);
+    console.log("Delete button parent Element: ", deleteButton.parentElement.parentElement)
+        if (deleteButton.parentElement.parentElement === taskList) {
+            taskList.removeChild(li);
+        } else if (deleteButton.parentElement.parentElement === checkedTasks) {
+            checkedTasks.removeChild(li);
+        }
+        
     });
 
     // Add number of completed tasks here
