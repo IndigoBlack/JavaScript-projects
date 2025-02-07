@@ -7,8 +7,6 @@
     A due date for each task with a reminder/notification.
 */
 
-
-// Still have to deal with the checkbox bugs
 function todo() {
     // Get the form values for the task
     const container = document.querySelector(".container");
@@ -29,30 +27,35 @@ function todo() {
     `; // Display the task details in the <li>
     taskList.appendChild(li); // Append newly created task to the incomplete task list
 
+    // Get references to the DOM elements
     const checkedTasks = document.querySelector(".checked-tasks");
+
+    // Event listener for changes (checking/unchecking tasks)
     container.addEventListener("change", function(event) {
         if (event.target && event.target.classList.contains("form-check-input")) {
             console.log("Checkbox clicked"); // Error checking
-            const box = event.target
-            const taskLi = box.closest("li");
+            const box = event.target;
+            const taskLi = box.closest("li");  // Get the closest <li> element
 
-            console.log("Current parent:", taskLi.parentElement); 
+            console.log("Current parent:", taskLi.parentElement);
 
+            // Remove the task from the current list (either taskList or checkedTasks)
             if (taskLi.parentElement === taskList) {
                 taskList.removeChild(taskLi);
                 console.log("Task removed from incomplete tasks");
             } else if (taskLi.parentElement === checkedTasks) {
                 checkedTasks.removeChild(taskLi);
-                console.log("Task removed from competed tasks");
+                console.log("Task removed from completed tasks");
             }
 
+            // Move the task to the opposite list based on checkbox state
             if (box.checked) {
-                checkedTasks.appendChild(taskLi); // Append it to the completed tasks list
+                checkedTasks.appendChild(taskLi);  // Move task to the completed tasks list
             } else {
-                taskList.appendChild(taskLi); // Append it to the incompleted tasks list
+                taskList.appendChild(taskLi);  // Move task to the incomplete tasks list
             }
         }
-    })
+    });
 
     
     // Get the values of the newly created task
@@ -69,7 +72,7 @@ function todo() {
         taskDescription.textContent = updateDescription
     });
     
-    const deleteButton = container.querySelector("#delete-btn");
+    const deleteButton = li.querySelector("#delete-btn");
     deleteButton.addEventListener("click", function() {
     console.log("Delete button parent Element: ", deleteButton.parentElement.parentElement)
         if (deleteButton.parentElement.parentElement === taskList) {
@@ -79,7 +82,7 @@ function todo() {
         }
         
     });
+    
 
-    // Add number of completed tasks here
 }
 
