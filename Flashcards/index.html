@@ -1,0 +1,53 @@
+<!-- 6. Flashcards App
+    Description: A study app where users can create flashcards for learning.
+    Features:
+    Create flashcards with a question and answer.
+    Shuffle and display flashcards randomly.
+    Track progress and mark cards as "known" or "unknown." -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Flashcards</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Flashcards</h1>
+        <div class="flashcards-form">
+            <input type="text" id="card-title">
+            <input type="text" id="question">
+            <input type="text" id="answer">
+            
+            <!-- Button for submitting your created card add onclick -->
+            <button id="submit-card">Create Card</button>
+        </div>
+    </div>
+    <hr>
+    <div id="flashcards-display">
+        <!-- Display the cards title as here -->
+        <h3 id="card-title-displayed">Card Title</h3>
+        <!-- Display question here using javascript -->
+         <div id="display-question"></div>
+
+         <!-- Hide the answer unless the button is clicked -->
+        <p id="answer" style="display: none;"></p>
+
+        <!-- Add the onclick for displaying the answer to this button -->
+        <button id="answer-button">Show Answer</button>
+
+        <!-- Button for marking the card as known add onclick -->
+        <button id="mark-known">Known</button>
+
+        <!-- Button for marking the card as unknown add onclick -->
+        <button id="mark-unknown">Unknown</button>
+
+        <!-- Button to go to the next card add onclick  -->
+        <button id="next-card">Next Card</button>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
