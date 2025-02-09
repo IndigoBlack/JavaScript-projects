@@ -22,7 +22,7 @@ const markUnknown = document.getElementById("mark-unknown");
 const nextCard = document.getElementById("next-card");
 
 const currnetCardIndex = 0;
-const cards = []
+const cards = [];
 
 
 function createCard() {
@@ -54,4 +54,14 @@ function displayCard(card) {
     cardTitleHeading.textContent = card.title;
     displayQuestion.textContent = card.question;
     displayAnswer.textContent = card.answer;
+}
+
+function showAnswer() {
+    if (displayAnswer.style.display === "none") {
+        displayAnswer.style.display = "block";
+        displayAnswer.textContent = "Hide Answer";
+    } else if (displayAnswer.style.display === "block") {
+        displayAnswer.style.display = "none";
+        displayAnswer.textContent = "Show Answer"
+    }
 }
