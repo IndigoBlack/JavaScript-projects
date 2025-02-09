@@ -5,12 +5,13 @@
 //     Shuffle and display flashcards randomly.
 //     Track progress and mark cards as "known" or "unknown."
 
-// Function for creating a flashcard With a question. Function will be placed on the submit button.
-// Function for displaying the answer when the button is clicked.
-// Function for marking the card as known or unkown (option: You can make it 1 function or 2).
-// Function for next card.
+
+
+
+
 // Function to shuffle and display the cards.
 // Function to show the number of known and unknown cards.
+// Function to be able to search card by title or by status: known/unkown.
 const cardContainer = document.getElementById("card-container");
 const cardTitleHeading = document.getElementById("card-title-displayed");
 const displayQuestion = document.getElementById("display-question");
@@ -21,10 +22,12 @@ const markKnown = document.getElementById("mark-known");
 const markUnknown = document.getElementById("mark-unknown");
 const nextCard = document.getElementById("next-card");
 
-const currnetCardIndex = 0;
+let currentCardIndex = 0;
 const cards = [];
+const knownCards = [];
+const unknownCards = [];
 
-
+// Function for creating a flashcard With a question. Function will be placed on the submit button.
 function createCard() {
     const cardTitle = document.getElementById("card-title").value;
     const question = document.getElementById("question").value;
@@ -35,6 +38,7 @@ function createCard() {
         title: cardTitle,
         question: question,
         answer: answer,
+        status: "unknown",
     }
 
     // Push card to cards list
@@ -46,7 +50,7 @@ function createCard() {
     answerInput.value = '';
 
     //Function that displays the cards should be here with the index of current card
-    displayCard(cards[currnetCardIndex])
+    displayCard(cards[currentCardIndex])
 
 }
 
@@ -56,12 +60,63 @@ function displayCard(card) {
     displayAnswer.textContent = card.answer;
 }
 
+// Function for displaying the answer when the button is clicked.
 function showAnswer() {
     if (displayAnswer.style.display === "none") {
         displayAnswer.style.display = "block";
-        displayAnswer.textContent = "Hide Answer";
+        answerButton.textContent = "Hide Answer";
     } else if (displayAnswer.style.display === "block") {
         displayAnswer.style.display = "none";
-        displayAnswer.textContent = "Show Answer"
+        answerButton.textContent = "Show Answer"
     }
 }
+
+// Function for marking the card as known.
+function known() {
+    if (cards[currentCardIndex].status === "unknown") {
+        cards[currentCardIndex].status = "known";
+        knownCards.push(cards[currentCardIndex]);
+        alert("Card marked as known");
+    } else {
+        alert("This card is alread marked as known")
+    }
+}
+
+// Function for marking the card as unknown.
+function unknown() {
+    if (cards[currentCardIndex].status === "known") {
+        cards[currentCardIndex].status = "unknown";
+        unknownCards.push(cards[currentCardIndex]);
+        alert("Card marked as unknown");
+    } else {
+        alert("This card is already marked as unknown")
+    }
+}
+
+// Function for next card.
+function next() {
+    currentCardIndex++
+    if (currentCardIndex >= cards.length) {
+        currentCardIndex = 0;
+    }
+    displayCard(cards[currentCardIndex]);
+}
+
+// function showKnownCards() {
+//     if (knownCards.length > 0) {
+//         currentCardIndex = 0;
+//         displayCard(knownCards[currentCardIndex]);
+//     } else {
+//         alert("No known cards");
+//     }
+// }
+
+// function showUknownCards() {
+//     if (unknownCards.length > 0) {
+//         currentCardIndex = 0;
+//         displayCard(unknownCards[currentCardIndex]);
+//     } else {
+//         alert("No uknown cards");
+//     }
+// }
+
