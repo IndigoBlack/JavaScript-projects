@@ -9,7 +9,7 @@
 
 
 
-// Function to shuffle and display the cards.
+
 // Function to show the number of known and unknown cards.
 // Function to be able to search card by title or by status: known/unkown.
 const cardContainer = document.getElementById("card-container");
@@ -32,29 +32,36 @@ function createCard() {
     const cardTitle = document.getElementById("card-title").value;
     const question = document.getElementById("question").value;
     const answer = answerInput.value;
-    const submitButton = document.getElementById("submit-card");
 
     const card = {
         title: cardTitle,
         question: question,
         answer: answer,
-        status: "unknown",
+        status: "",
     }
 
     // Push card to cards list
     cards.push(card);
+    console.log("creating card: ", card)
+
+    // Shuffle cards
     shuffle(cards)
+    console.log("Shuffling cards...")
+    
 
     // Clear the inputs after submitting
     document.getElementById("card-title").value = '';
     document.getElementById("question").value = '';
     answerInput.value = '';
+    console.log("clearing inputs...")
 
+    currentCardIndex = 0;
     // Display cards
     displayCard(cards[currentCardIndex])
-
+    console.log("Displaying card.")
 }
 
+// Function to display cards
 function displayCard(card) {
     cardTitleHeading.textContent = card.title;
     displayQuestion.textContent = card.question;
@@ -74,24 +81,46 @@ function showAnswer() {
 
 // Function for marking the card as known.
 function known() {
-    if (cards[currentCardIndex].status === "unknown") {
+    const currentCard = cards[currentCardIndex]
+    if (cards[currentCardIndex].status !== "known ") {
         cards[currentCardIndex].status = "known";
-        knownCards.push(cards[currentCardIndex]);
+        
+        if (!knownCards.includes(currentCard)) {
+            knownCards.push(cards[currentCardIndex]);
+        }
         alert("Card marked as known");
+
+        const indexInUnknown = unknownCards.indexOf(currentCard);
+        if (indexInUnknown !== -1) {
+            unknownCards.splice(indexInUnknown, 1);  // Remove card from unknownCards
+        }
+        
     } else {
         alert("This card is alread marked as known")
     }
+    updateCardCount();
 }
 
 // Function for marking the card as unknown.
 function unknown() {
-    if (cards[currentCardIndex].status === "known") {
+    const currentCard = cards[currentCardIndex]
+    if (cards[currentCardIndex].status !== "unknown") {
         cards[currentCardIndex].status = "unknown";
-        unknownCards.push(cards[currentCardIndex]);
+
+        if (!unknownCards.includes(currentCard)) {
+            unknownCards.push(cards[currentCardIndex]);
+        }
         alert("Card marked as unknown");
+
+        //
+        const indexInknown = knownCards.indexOf(currentCard);
+        if (indexInknown !== -1) {
+            knownCards.splice(indexInknown, 1);  // Remove card from unknownCards
+        }
     } else {
         alert("This card is already marked as unknown")
     }
+    updateCardCount();
 }
 
 // Function for next card.
@@ -106,15 +135,24 @@ function next() {
 // Shuffle card using fisher Yates shuffle:
 function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1))
+        let j = Math.floor(Math.random() * (i + 1));
 
         // Swap arr[i] with arr[j]
         // let t = arr[i]
         // arr[i] = arr[j]
         // arr[j] = t
-        [arr[i], arr[j] = arr[j], arr[i]]
+        [arr[j], arr[i]] = [arr[i], arr[j]]
     }
 }
+
+function updateCardCount() {
+    const countCard = document.getElementById("number-of-cards");
+    countCard.innerHTML = `Known cards: ${knownCards.length}<br>Unknown cards: ${unknownCards.length}<br>Total cards: ${cards.length}`;
+}
+
+document.getElementById("submit-card").addEventListener("click", function() {
+    updateCardCount();
+})
 
 // function showKnownCards() {
 //     if (knownCards.length > 0) {

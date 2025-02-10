@@ -1,2 +1,35 @@
 /* - Adjust the background to be blurry or show a table in the background.
 - Show the flashcard in a card format. */
+body {
+    background-image: url("https://images.pexels.com/photos/172277/pexels-photo-172277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+}
+
+#card-container {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 20vh;
+    
+}
+
+#number-of-cards {
+    color: white;
+    text-align: center;
+}
+
+.btn {
+    margin: auto;
+    margin-bottom: 5px;
+    max-width: 300px;
+    cursor: pointer;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #bacdd8;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+#card-title-displayed, p {
+    text-align: center;
+}
