@@ -43,13 +43,14 @@ function createCard() {
 
     // Push card to cards list
     cards.push(card);
+    shuffle(cards)
 
     // Clear the inputs after submitting
     document.getElementById("card-title").value = '';
     document.getElementById("question").value = '';
     answerInput.value = '';
 
-    //Function that displays the cards should be here with the index of current card
+    // Display cards
     displayCard(cards[currentCardIndex])
 
 }
@@ -100,6 +101,19 @@ function next() {
         currentCardIndex = 0;
     }
     displayCard(cards[currentCardIndex]);
+}
+
+// Shuffle card using fisher Yates shuffle:
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+
+        // Swap arr[i] with arr[j]
+        // let t = arr[i]
+        // arr[i] = arr[j]
+        // arr[j] = t
+        [arr[i], arr[j] = arr[j], arr[i]]
+    }
 }
 
 // function showKnownCards() {
