@@ -15,37 +15,46 @@
     <title>Flashcards</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <p><a href="#card-container">Flashcards</a></p>
+            <p><a href="#form">Create Card</a></p>
+        </nav>
+    </header>
     <p id="number-of-cards"></p>
-    <div id="card-container">
-        <div class="card">
-            <!-- Display the cards title as here -->
-            <h3 id="card-title-displayed">Card Title</h3>
-            <!-- Display question here using javascript -->
-            <p id="display-question"></p>
-            <!-- Hide the answer unless the button is clicked -->
-            <p id="display-answer" style="display: none;"></p>
-            <!-- Add the onclick for displaying the answer to this button -->
-            <button id="answer-button" class="btn btn-secondary" onclick="showAnswer()">Show Answer</button>
-            <!-- Button for marking the card as known add onclick -->
-            <button id="mark-known" class="btn btn-secondary" onclick="known()">Known</button>
-            <!-- Button for marking the card as unknown add onclick -->
-            <button id="mark-unknown" class="btn btn-secondary" onclick="unknown()">Unknown</button>
-            <!-- Button to go to the next card add onclick  -->
-            <button id="next-card" class="btn btn-secondary" onclick="next()">Next Card</button>
+    <section id="flashcards">
+        <div id="card-container" class="card" style="width: 18rem;">
+            <div class="card-body">
+                <!-- Display the cards title as here -->
+                <h3 id="card-title-displayed" class="card-title">Card Title</h3>
+                <!-- Display question here using javascript -->
+                <p id="display-question" class="card-text"></p>
+                <!-- Hide the answer unless the button is clicked -->
+                <p id="display-answer" class="card-text" style="display: none;"></p>
+                <!-- Add the onclick for displaying the answer to this button -->
+                <button id="answer-button" class="btn btn-secondary" onclick="showAnswer()">Show Answer</button>
+                <!-- Button for marking the card as known add onclick -->
+                <button id="mark-known" class="btn btn-secondary" onclick="known()">Known</button>
+                <!-- Button for marking the card as unknown add onclick -->
+                <button id="mark-unknown" class="btn btn-secondary" onclick="unknown()">Unknown</button>
+                <!-- Button to go to the next card add onclick  -->
+                <button id="next-card" class="btn btn-secondary" onclick="next()">Next Card</button>
+            </div>
         </div>
-    </div>
+    </section>
     <hr>
-    <div id="form-container">
+    <section id="form">
         <h1>Flashcards</h1>
-        <div class="flashcards-form">
-            <input type="text" id="card-title" placeholder="Card Title">
-            <input type="text" id="question" placeholder="Card question">
-            <input type="text" id="answer" placeholder="Card Answer">
-            
-            <!-- Button for submitting your created card add onclick -->
-            <button id="submit-card" class="btn btn-primary" onclick="createCard()">Create Card</button>
+        <div id="form-container">
+            <div class="form">
+                <input type="text" id="card-title" class="form-control" placeholder="Card Title" style="width: 24rem;">
+                <input type="text" id="question" class="form-control" placeholder="Card question" style="width: 24rem;">
+                <input type="text" id="answer" class="form-control" placeholder="Card Answer" style="width: 24rem;">
+                <!-- Button for submitting your created card add onclick -->
+                <button id="submit-card" class="btn btn-primary" onclick="createCard()">Create Card</button>
+            </div>
         </div>
-    </div>
+    </section>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>

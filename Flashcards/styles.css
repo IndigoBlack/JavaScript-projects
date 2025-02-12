@@ -1,8 +1,13 @@
 /* - Adjust the background to be blurry or show a table in the background.
 - Show the flashcard in a card format. */
 body {
-    background-image: url("https://images.pexels.com/photos/172277/pexels-photo-172277.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-image: url("https://img.freepik.com/free-vector/sparkling-background_79603-36.jpg?t=st=1739348484~exp=1739352084~hmac=7a90e316b3999c63add96b97a8433e07c2059ee6299e0e9a11058dbfb039aa59&w=740");
     background-size: cover;
+}
+
+header {
+    border: 1px solid purple;
+    background-color: rgb(21, 13, 61);
 }
 
 #card-container {
@@ -24,13 +29,30 @@ body {
     cursor: pointer;
 }
 
-.card {
-    background-color: white;
-    border: 1px solid #bacdd8;
-    padding: 20px;
-    border-radius: 19px;
-}
-
 #card-title-displayed, p {
     text-align: center;
+}
+
+#form {
+    margin-top: 10%;
+}
+
+h1 {
+    text-align: center;
+    color: beige;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    margin: 5px;
+}
+
+#submit-card {
+    margin: 0 auto;
+    display: block;
 }
