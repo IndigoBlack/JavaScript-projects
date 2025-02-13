@@ -1,0 +1,21 @@
+{
+  "name": "y",
+  "version": "20.18.1",
+  "description": "A recipe book project where I user can enter and save their recipes ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "JavaScript-pojects"
+  },
+  "author": "Mamello",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

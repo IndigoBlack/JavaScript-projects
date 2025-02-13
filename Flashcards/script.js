@@ -21,6 +21,8 @@ const answerButton = document.getElementById("answer-button");
 const markKnown = document.getElementById("mark-known");
 const markUnknown = document.getElementById("mark-unknown");
 const nextCard = document.getElementById("next-card");
+const deleteButton = document.getElementById("delete-card");
+
 
 let currentCardIndex = 0;
 const cards = [];
@@ -59,6 +61,9 @@ function createCard() {
     // Display cards
     displayCard(cards[currentCardIndex])
     console.log("Displaying card.")
+
+    // Enable delete button
+    deleteButton.disabled = false;
 }
 
 // Function to display cards
@@ -153,6 +158,38 @@ function updateCardCount() {
 document.getElementById("submit-card").addEventListener("click", function() {
     updateCardCount();
 })
+
+// Function to delete card
+function deleteCard() {
+    
+    // Hide delete button if there are no cards
+    if (cards.length !== 0) {
+        const cardToDelete = cards[currentCardIndex];
+        // Remove from cards array
+        cards.splice(currentCardIndex, 1)
+        // Check if the card is in knownCards/UknownCards array before deleting
+        if (knownCards.includes(cardToDelete)){
+            knownCards.splice(knownCards.indexOf(cardToDelete), 1)
+        } else if (unknownCards.includes(cardToDelete)) {
+            unknownCards.splice(unknownCards.indexOf(cardToDelete), 1)
+        }
+
+        // To ensure currentCardIndex is valid
+        if (currentCardIndex >= cards.length) {
+            currentCardIndex = cards.length - 1
+        }
+
+        //Display next card
+        if (cards.length > 0) {
+            displayCard(cards[currentCardIndex]);
+        } else {
+            // Message if no cards are left
+            alert("No cards left.");
+            deleteButton.disabled = true;
+        }
+        updateCardCount();
+    }
+}
 
 // function showKnownCards() {
 //     if (knownCards.length > 0) {

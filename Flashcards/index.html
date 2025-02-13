@@ -39,6 +39,8 @@
                 <button id="mark-unknown" class="btn btn-secondary" onclick="unknown()">Unknown</button>
                 <!-- Button to go to the next card add onclick  -->
                 <button id="next-card" class="btn btn-secondary" onclick="next()">Next Card</button>
+                <!-- Button to delete card. Add onclick -->
+                <button id="delete-card" class="btn btn-danger" onclick="deleteCard()">Delete Card</button>
             </div>
         </div>
     </section>
@@ -47,9 +49,9 @@
         <h1>Flashcards</h1>
         <div id="form-container">
             <div class="form">
-                <input type="text" id="card-title" class="form-control" placeholder="Card Title" style="width: 24rem;">
-                <input type="text" id="question" class="form-control" placeholder="Card question" style="width: 24rem;">
-                <input type="text" id="answer" class="form-control" placeholder="Card Answer" style="width: 24rem;">
+                <input type="text" id="card-title" class="form-control" placeholder="Card Title" style="width: 24rem;" required>
+                <input type="text" id="question" class="form-control" placeholder="Card question" style="width: 24rem;" required>
+                <input type="text" id="answer" class="form-control" placeholder="Card Answer" style="width: 24rem;" required>
                 <!-- Button for submitting your created card add onclick -->
                 <button id="submit-card" class="btn btn-primary" onclick="createCard()">Create Card</button>
             </div>

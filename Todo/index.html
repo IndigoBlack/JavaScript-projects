@@ -11,6 +11,7 @@
 
         h1 {
             text-align: center;
+            margin: 20px;
         }
 
         .form-control {
@@ -33,8 +34,8 @@
         
         <h1>To-Do</h1>
         <div class="form-container">
-            <input type="text" id="title" class="form-control">
-            <textarea id="description" class="form-control" rows="3"></textarea>
+            <input type="text" id="title" class="form-control" placeholder="Task Title">
+            <textarea id="description" class="form-control" rows="3" placeholder="Task Description"></textarea>
             <input type="date" id="date" class="form-control">
             <button id="submit" class="btn btn-primary" onclick="todo()">Submit</button>
         </div>
